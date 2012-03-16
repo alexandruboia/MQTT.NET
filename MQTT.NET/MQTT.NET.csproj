@@ -40,6 +40,8 @@
     <Compile Include="Events\ConnectionFailedArgs.cs" />
     <Compile Include="Events\ConnectionFailureReason.cs" />
     <Compile Include="Events\PublishReceivedArgs.cs" />
+    <Compile Include="Exceptions\MqttNotImplentedException.cs" />
+    <Compile Include="Exceptions\MqttProtocolException.cs" />
     <Compile Include="IMqtt.cs" />
     <Compile Include="Mqtt.cs" />
     <Compile Include="Protocol\Messages\MqttConnectMessage.cs" />

@@ -16,17 +16,20 @@ namespace Mqtt.Net
 
         protected bool _dup;
 
-        public MqttMessage()
-        {
-            return;
-        }
-
         public MqttMessage(byte fixedHeader)
         {
             ReadFixedHeader(fixedHeader);
         }
 
-        protected void ReadFixedHeader(byte fixedHeader)
+        public MqttMessage(MqttMessageType messageType, QoSLevel qosLevel, bool retain, bool dup)
+        {
+            _qosLevel = qosLevel;
+            _messageType = messageType;
+            _retain = retain;
+            _dup = dup;
+        }
+
+        private void ReadFixedHeader(byte fixedHeader)
         {
             _retain = (fixedHeader & 0x01) != 0;
             _qosLevel = (QoSLevel)((fixedHeader & 0x06) >> 1);
@@ -34,7 +37,7 @@ namespace Mqtt.Net
             _messageType = (MqttMessageType)((fixedHeader & 0xf0) >> 4);
         }
 
-        protected void WriteFixedHeader(Stream stream)
+        private void WriteFixedHeader(Stream stream)
         {
             byte _fixedHeader = 0x00;
 
@@ -100,8 +103,8 @@ namespace Mqtt.Net
 
         protected void WriteUTF8String(string str, Stream stream)
         {
-            ushort _length = (ushort)str.Length;
             byte[] _buffer = Encoding.UTF8.GetBytes(str);
+            ushort _length = (ushort)_buffer.Length;
             
             WriteUShort(_length, stream);
             stream.Write(_buffer, 0, _length);
@@ -146,27 +149,11 @@ namespace Mqtt.Net
 
         protected abstract void ComputeRemainingLength();
 
-        public int RemainingLength
-        {
-            get
-            {
-                return _remainingLength;
-            }
-            set
-            {
-                _remainingLength = value;
-            }
-        }
-
         public bool Dup
         {
             get
             {
                 return _dup;
-            }
-            set
-            {
-                _dup = value;
             }
         }
 
@@ -176,10 +163,6 @@ namespace Mqtt.Net
             {
                 return _retain;
             }
-            set
-            {
-                _retain = value;
-            }
         }
 
         public QoSLevel QoSLevel
@@ -188,9 +171,13 @@ namespace Mqtt.Net
             {
                 return _qosLevel;
             }
-            set
+        }
+
+        public int RemainingLength
+        {
+            get
             {
-                _qosLevel = value;
+                return _remainingLength;
             }
         }
 
