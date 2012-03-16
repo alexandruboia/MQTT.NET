@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT.NET", "MQTT.NET.csproj", "{93786D60-280D-442B-96E8-233B0451BC9D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MQTT.NET.Tests", "..\MQTT.NET.Tests\MQTT.NET.Tests.csproj", "{ECB60644-0A15-43E9-8B7A-993B2A900904}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,10 @@ Global
 		{93786D60-280D-442B-96E8-233B0451BC9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93786D60-280D-442B-96E8-233B0451BC9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93786D60-280D-442B-96E8-233B0451BC9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECB60644-0A15-43E9-8B7A-993B2A900904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECB60644-0A15-43E9-8B7A-993B2A900904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECB60644-0A15-43E9-8B7A-993B2A900904}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECB60644-0A15-43E9-8B7A-993B2A900904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
